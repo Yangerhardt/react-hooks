@@ -1,32 +1,7 @@
 import React, { useReducer } from "react";
 import PageTitle from "../../components/layout/PageTitle";
 
-const initialState = {
-  cart: [],
-  prdoutos: [],
-  user: null,
-  // foco: alterar o number
-  number: 0,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "numberAdd2":
-      return { ...state, number: state.number + 2 };
-    case "numberMultiplyBy7":
-      return { ...state, number: state.number * 7 };
-    case "numberDivideBy25":
-      return { ...state, number: state.number / 25 };
-    case "roundNumber":
-      return { ...state, number: parseInt(state.number) };
-    case "numberAddAny":
-      return { ...state, number: state.number + action.payload };
-    case "login":
-      return { ...state, user: { name: action.payload } };
-    default:
-      return state;
-  }
-}
+import { initialState, numberAdd2, reducer } from "../../store";
 
 const UseReducer = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -55,7 +30,7 @@ const UseReducer = (props) => {
           </button>
           <button
             className="btn"
-            onClick={() => dispatch({ type: "numberAdd2" })}
+            onClick={() => numberAdd2(dispatch)}
           >
             +2
           </button>
